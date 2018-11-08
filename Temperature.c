@@ -58,15 +58,13 @@ int main(int argc, char *argv[])
 	printf("%d ",counter);
 	if(counter == 1){
 		initialTemp = temperature;
-		/*ifttt("https://maker.ifttt.com/trigger/temperature_sense/with/key/cEsyCCLR4jzCs8_UtE3zy3","Temeprature","Sensed","triggered");*/
-		ifttt("https://maker.ifttt.com/trigger/alarm_triggered/with/key/bYHA88jvpwt5C8E5p_m9jx","Tested","1","2");
+		ifttt("https://maker.ifttt.com/trigger/temperature_sense/with/key/cEsyCCLR4jzCs8_UtE3zy3","Temeprature","Sensed","triggered");
 		
 	}
   	
 	if((temperature - initialTemp) >=1){
 		printf("changed");
-		/*ifttt("https://maker.ifttt.com/trigger/temperature_sense/with/key/cEsyCCLR4jzCs8_UtE3zy3","Temperature","Sensed","triggered");*/
-		ifttt("https://maker.ifttt.com/trigger/alarm_triggered/with/key/bYHA88jvpwt5C8E5p_m9jx","Tested","1","2");
+		ifttt("https://maker.ifttt.com/trigger/temperature_sense/with/key/cEsyCCLR4jzCs8_UtE3zy3","Temperature","Sensed","triggered");
 	}
 	
 	if(temperature < minTemp){
