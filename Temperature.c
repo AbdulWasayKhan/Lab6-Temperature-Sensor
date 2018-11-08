@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
 	counter =0;
 	minTemp = 300.0F;
 	maxTemp = 0.0F;
+	char l[50], cur[50], h[50];
 
 	while(1){
 	fd = open("/sys/bus/w1/devices/28-0213133464aa/w1_slave", O_RDONLY);
@@ -55,16 +56,21 @@ int main(int argc, char *argv[])
 	
 	}
 	temperature = (float) atoi(temp)/1000;
-	printf("%d ",counter);
+	printf("%d",counter);
 	if(counter == 1){
 		initialTemp = temperature;
-		ifttt("https://maker.ifttt.com/trigger/temperature_sense/with/key/cEsyCCLR4jzCs8_UtE3zy3","Temeprature","Sensed","triggered");
-		
+		sprintf(l, "%d", minTemp);
+		sprintf(cur, "%d", temperature);
+		sprintf(h, "%d", maxTemp);
+		ifttt("https://maker.ifttt.com/trigger/{event}/with/key/cEsyCCLR4jzCs8_UtE3zy3",l,cur,h);
 	}
   	
 	if((temperature - initialTemp) >=1){
 		printf("changed");
-		ifttt("https://maker.ifttt.com/trigger/temperature_sense/with/key/cEsyCCLR4jzCs8_UtE3zy3","Temperature","Sensed","triggered");
+		sprintf(l, "%d", minTemp);
+                sprintf(cur, "%d", temperature);
+                sprintf(h, "%d", maxTemp);
+		ifttt("https://maker.ifttt.com/trigger/{event}/with/key/cEsyCCLR4jzCs8_UtE3zy3",l,cur,h);
 	}
 	
 	if(temperature < minTemp){
