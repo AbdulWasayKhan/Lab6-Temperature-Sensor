@@ -59,18 +59,18 @@ int main(int argc, char *argv[])
 	printf("%d",counter);
 	if(counter == 1){
 		initialTemp = temperature;
-		sprintf(l, "%d", minTemp);
-		sprintf(cur, "%d", temperature);
-		sprintf(h, "%d", maxTemp);
-		ifttt("https://maker.ifttt.com/trigger/{event}/with/key/cEsyCCLR4jzCs8_UtE3zy3",l,cur,h);
+		sprintf(l, "Min: %d", minTemp);
+		sprintf(cur, "Current %d", temperature);
+		sprintf(h, "Max: %d", maxTemp);
+		ifttt("https://maker.ifttt.com/trigger/Temp_Sensing/with/key/cEsyCCLR4jzCs8_UtE3zy3",l,cur,h);
 	}
   	
 	if((temperature - initialTemp) >=1){
 		printf("changed");
-		sprintf(l, "%d", minTemp);
-                sprintf(cur, "%d", temperature);
-                sprintf(h, "%d", maxTemp);
-		ifttt("https://maker.ifttt.com/trigger/{event}/with/key/cEsyCCLR4jzCs8_UtE3zy3",l,cur,h);
+		sprintf(l, "Min: %d", minTemp);
+                sprintf(cur, "Current: %d", temperature);
+                sprintf(h, "Max: %d", maxTemp);
+		ifttt("https://maker.ifttt.com/trigger/Temp_Sensing/with/key/cEsyCCLR4jzCs8_UtE3zy3",l,cur,h);
 	}
 	
 	if(temperature < minTemp){
