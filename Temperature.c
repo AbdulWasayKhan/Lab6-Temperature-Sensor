@@ -59,17 +59,17 @@ int main(int argc, char *argv[])
 	printf("%d",counter);
 	if(counter == 1){
 		initialTemp = temperature;
-		sprintf(l, "Min: %d", minTemp);
-		sprintf(cur, "Current %d", temperature);
-		sprintf(h, "Max: %d", maxTemp);
+		sprintf(l, "Min: %.3f", minTemp);
+		sprintf(cur, "Current %.3f", temperature);
+		sprintf(h, "Max: %.3f", maxTemp);
 		ifttt("https://maker.ifttt.com/trigger/Temp_Sensing/with/key/cEsyCCLR4jzCs8_UtE3zy3",l,cur,h);
 	}
   	
 	if((temperature - initialTemp) >=1){
 		printf("changed");
-		sprintf(l, "Min: %d", minTemp);
-                sprintf(cur, "Current: %d", temperature);
-                sprintf(h, "Max: %d", maxTemp);
+		sprintf(l, "Min: %.3f", minTemp);
+                sprintf(cur, "Current: %.3f", temperature);
+                sprintf(h, "Max: %.3f", maxTemp);
 		ifttt("https://maker.ifttt.com/trigger/Temp_Sensing/with/key/cEsyCCLR4jzCs8_UtE3zy3",l,cur,h);
 	}
 	
